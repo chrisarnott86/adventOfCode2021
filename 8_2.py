@@ -1,5 +1,5 @@
-with open('input8-test.txt','r') as file:
-#with open('input8.txt','r') as file:
+#with open('input8-test.txt','r') as file:
+with open('input8.txt','r') as file:
     temp = file.readlines()
     temp = [line.strip() for line in temp]
 
@@ -77,7 +77,7 @@ for i,vals in enumerate(config):
             lookup[9] = letset
     stringnum=''
     #print(i)
-    print(len(output[i].split(' ')))
+    #print(len(output[i].split(' ')))
     for string in output[i].split(' '):
         #print(string)
         newset = set()
@@ -86,6 +86,7 @@ for i,vals in enumerate(config):
         #for val in string.split(' '):
         for key,combi in lookup.items():
             if combi==newset:
+                #print(key,combi)
                 stringnum+=str(key)
     #print(lookup)
     print(stringnum)
