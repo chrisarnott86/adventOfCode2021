@@ -11,7 +11,8 @@ count = 0
 for i, j in enumerate(file_list[:-1]):
     #print(simple)
     #simple+=1
-    if file_list[i+1] > j:
+    print(type(file_list[i+1]),type(j))
+    if int(file_list[i+1]) > int(j):
        count = count+1
        #print(i, j, count,"bigger")
     #else:
