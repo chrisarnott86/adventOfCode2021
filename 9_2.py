@@ -1,6 +1,7 @@
+from random import random as random
 tempgrid = []
-#with open('input9-test.txt','r') as file:
-with open('input9.txt','r') as file:
+with open('input9-test.txt','r') as file:
+#with open('input9.txt','r') as file:
     temp = file.readlines()
     for line in temp:
         tempgrid.append([line.strip()])
@@ -22,6 +23,7 @@ for i,line in enumerate(tempgrid):
 
 dirs=[(0,-1),(0,1),(-1,0),(1,0)]
 risksum = 0
+locs = []
 for i,row in enumerate(smokemap):
     for j,col in enumerate(row):
         testvals = []
@@ -37,10 +39,23 @@ for i,row in enumerate(smokemap):
                 pass #print('ok')
         #print(len(testvals))
         if smokeval<min(testvals):
+            locs.append((i,j))
             #print(testvals)
             #print(f"got a min {smokeval}")
             risksum+=smokeval+1
 
 print(risksum)
+print(locs)
 
+basins = []
+def getBasinSize(loc,smokemap):
+    
+    return int(random()*10)+1
+
+for loc in locs:
+    basins.append(getBasinSize(loc,smokemap))
+
+basins.sort(reverse=True)
+
+print(basins[0]*basins[1]*basins[2])
 
