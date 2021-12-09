@@ -14,6 +14,7 @@ for i in temp:
     config.append(i.split(' | ')[0])
 
 lookup = dict()
+bigtot = 0
 for i,vals in enumerate(config):
     for conf in vals.split(' '):
         letset = set()
@@ -43,7 +44,7 @@ for i,vals in enumerate(config):
         letset = set()
         for j in conf:
             letset.add(j)
-        if len(conf)==6 and not lookup[7].issubset(letset):
+        if len(conf)==6 and not lookup[1].issubset(letset):
             lookup[6] = letset
     for conf in vals.split(' '):
         letset = set()
@@ -67,7 +68,7 @@ for i,vals in enumerate(config):
         letset = set()
         for j in conf:
             letset.add(j)
-        if len(conf)==6 and (lookup[2]-lookup[3]).issubset(letset):
+        if len(conf)==6 and ((lookup[1])|(lookup[8]-lookup[3])).issubset(letset):
             lookup[0] = letset
     for conf in vals.split(' '):
         letset = set()
@@ -90,6 +91,7 @@ for i,vals in enumerate(config):
                 stringnum+=str(key)
     #print(lookup)
     print(stringnum)
+    bigtot+=int(stringnum)
 #print(lookup)
 #count=0
 #for out in output:
@@ -101,3 +103,4 @@ for i,vals in enumerate(config):
 #                stringnum+=str(key)
 #    print(stringnum)
 #print(count)
+print(bigtot)
