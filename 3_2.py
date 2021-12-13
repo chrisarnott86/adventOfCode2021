@@ -24,12 +24,12 @@ for i in range(0,12):
         lines = mylines
     elif (len(mylines)==1):
         break
-print(mylines)
+O2 = mylines[0].strip()
 with open('input3.txt','r') as file:
     lines = file.readlines()
     lines = [line for line in lines]
 # CO2
-for i in range(0,12):
+for i in range(len(lines[0])):
     zeros = 0
     ones = 0
     for line in lines:
@@ -53,6 +53,6 @@ for i in range(0,12):
         break
 
 
-print(mylines)
-## Gamma 654
-## epsilon 3441 
+CO2 = mylines[0].strip()
+
+print(f"O2: {O2}, CO2: {CO2}, Life Support: {int(O2,2)*int(CO2,2)}")
