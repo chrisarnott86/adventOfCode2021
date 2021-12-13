@@ -2,7 +2,8 @@ with open('input3.txt','r') as file:
     lines = file.readlines()
     lines = [line for line in lines]
 
-for i in range(0,12):
+gamma = ''
+for i in range(len(lines[0])):
     zeros = 0
     ones = 0
     for line in lines:
@@ -11,9 +12,15 @@ for i in range(0,12):
         if line[i]=='1':
             ones+=1
     if zeros>ones:
-        print('0')
+        gamma += '0'
     if ones>zeros:
-        print('1')
+        gamma += '1'
 
-## Gamma 654
-## epsilon 3441 
+epsilon = ''
+for bit in gamma:
+    if bit=='0':
+        epsilon+='1'
+    else:
+        epsilon+='0'
+
+print(f"gamma: {gamma},epsilon: {epsilon}, power: {int(gamma,2)*int(epsilon,2)}")
