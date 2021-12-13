@@ -1,4 +1,5 @@
-with open('input3.txt','r') as file:
+#with open('input3.txt','r') as file:
+with open('input3-test.txt','r') as file:
     lines = file.readlines()
     lines = [line for line in lines]
 

@@ -1,8 +1,9 @@
 with open('input3.txt','r') as file:
+#with open('input3-test.txt','r') as file:
     lines = file.readlines()
     lines = [line for line in lines]
 
-for i in range(0,12):
+for i in range(len(lines[0])):
     zeros = 0
     ones = 0
     for line in lines:
@@ -26,6 +27,7 @@ for i in range(0,12):
         break
 O2 = mylines[0].strip()
 with open('input3.txt','r') as file:
+#with open('input3-test.txt','r') as file:
     lines = file.readlines()
     lines = [line for line in lines]
 # CO2
