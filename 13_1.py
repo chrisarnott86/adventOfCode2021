@@ -38,18 +38,51 @@ for line in lines:
         #x tells you column, y row hence switched!
 pprint(markmap)
 
-#for row in markmap:
-#    for col in row:
+def countMarks(map,thisfold):
+    count = 0
+    print(thisfold)
+    for i,row in enumerate(map):
+        for j,col in enumerate(row):
+                if thisfold[0]=='y':
+                    if i<int(thisfold[1]):
+                        if map[i][j] == '#':
+                            count+=1
+                else:
+                    if j<int(thisfold[1]):
+                        if map[i][j] == '#':
+                            count+=1
+    return count
 
-for fold in foldings:
+def resizeMap(map,thisfold):
     if fold[0]=='y':
+        newMapRows = len(map)//2
+        newMapCols = len(map[0])
+    else:
+        newMapRows = len(map)
+        newMapCols = len(map[0])//2
+    newmap =[['_' for i in range(newMapCols)] for j in range(newMapRows)] 
+    for i,row in enumerate(newmap):
+        for j,col in enumerate(newmap):
+                newmap[i][j] = map[i][j]
+    return newmap
+for count,fold in enumerate(foldings):
+    #if count==0:
+        print(count)
         for i,row in enumerate(markmap):
             for j,col in enumerate(row):
-                if i>int(fold[1]):
-                    if markmap[i][j]=='#':
-                        markmap[i-int(fold[1])][j]='#'
+                if fold[0]=='y':
+                    if i>int(fold[1]):
+                        if markmap[i][j]=='#':
+                            markmap[int(fold[1])-(i-int(fold[1]))][j]='#'
+                else:
+                    if j>int(fold[1]):
+                        if markmap[i][j]=='#':
+                            markmap[i][int(fold[1])-(j-int(fold[1]))]='#'
+        markmap = resizeMap(markmap,fold)
 
 pprint(markmap)
+pprint(countMarks(markmap,foldings[0]))
+
 
 
 
