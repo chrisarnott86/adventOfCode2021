@@ -28,8 +28,11 @@ def min_path_sum(matrix):
     return best[-1]
 
 bigm = []
-for 
-#pprint(m)
+print(m)
+#for i,line in enumerate(m):
+#    for j,row in enumerate(line):
+        
+pprint(bigm)
 #m = [map(int, row.split(',')) for row in open("p081_matrix.txt").readlines()]
 #c, r = len(m), len(m[0])
 #print(c,r)
