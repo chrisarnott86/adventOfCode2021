@@ -1,4 +1,4 @@
-thefilepath = "03_01_Test_Data.txt"
+thefilepath = "input3-test.txt"
 
 #with open(thefilepath) as f:
 #    file_list = f.readlines()
