@@ -46,7 +46,7 @@ def position_check(start_list, result_list, bits_list, position):
     for line in start_list:
         bits_list.append(line[position])
 
-    print("full initial bit list:", bits_list)
+    #print("full initial bit list:", bits_list)
 
     # Find the most common (0 or 1?):
     c = Counter(bits_list)
@@ -78,6 +78,8 @@ def result_print(final_pos):
 
 # Code / Function for C02 SCRUBBER RATING:
 def position_check_2(start_list, result_list, bits_list, position):
+    for line in start_list:
+        bits_list.append(line[position])
     # Find the most common (0 or 1?):
     c = Counter(bits_list)
     c.most_common(1)
@@ -127,8 +129,8 @@ def c02_checks():
     Pos12 = []
 
     def c02_check_loop(this_list, pos_var, bit_list, position):
-        print("Values Kept for Pos1:", position_check_2(this_list, pos_var, bit_list, position))
-
+        #print("Values Kept for Pos1:", position_check_2(this_list, pos_var, bit_list, position))
+        position_check_2(this_list, pos_var, bit_list, position)
         if len(pos_var) == 1:
             global c02_scrub_rating
             c02_scrub_rating = result_print_2(pos_var)
@@ -153,7 +155,8 @@ def c02_checks():
 
 def oxygen_checks(this_list, pos_var, bit_list, position):
     # Initially this code runs to check Oxygen Binary Numbers.
-    print("Values Kept for Pos1:", position_check(this_list, pos_var, bit_list, position))
+    #print("Values Kept for Pos1:", position_check(this_list, pos_var, bit_list, position))
+    position_check(this_list, pos_var, bit_list, position)
     if len(pos_var) == 1:
         global ox_gen_rating_final
         ox_gen_rating_final = result_print(pos_var)

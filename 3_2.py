@@ -57,4 +57,4 @@ for i in range(len(lines[0])):
 
 CO2 = mylines[0].strip()
 
-print(f"O2: {O2}, CO2: {CO2}, Life Support: {int(O2,2)*int(CO2,2)}")
+print(f"O2: {int(O2,2)}, CO2: {int(CO2,2)}, Life Support: {int(O2,2)*int(CO2,2)}")
