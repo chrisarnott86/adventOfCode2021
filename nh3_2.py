@@ -178,18 +178,21 @@ tenth_bits = []
 eleventh_bits = []
 twelfth_bits = []
 
-c02_checks(file_list, Pos1, first_bits, 0)
-c02_checks(Pos1, Pos2, second_bits, 1)
-c02_checks(Pos2, Pos3, third_bits, 2)
-c02_checks(Pos3, Pos4, fourth_bits, 3)
-c02_checks(Pos4, Pos5, fifth_bits, 4)
-c02_checks(Pos5, Pos6, sixth_bits, 5)
-c02_checks(Pos6, Pos7, seventh_bits, 6)
-c02_checks(Pos7, Pos8, eighth_bits, 7)
-c02_checks(Pos8, Pos9, ninth_bits, 8)
-c02_checks(Pos9, Pos10, tenth_bits, 9)
-c02_checks(Pos10, Pos11, eleventh_bits, 10)
-c02_checks(Pos11, Pos12, twelfth_bits, 11)
+try:
+    c02_checks(file_list, Pos1, first_bits, 0)
+    c02_checks(Pos1, Pos2, second_bits, 1)
+    c02_checks(Pos2, Pos3, third_bits, 2)
+    c02_checks(Pos3, Pos4, fourth_bits, 3)
+    c02_checks(Pos4, Pos5, fifth_bits, 4)
+    c02_checks(Pos5, Pos6, sixth_bits, 5)
+    c02_checks(Pos6, Pos7, seventh_bits, 6)
+    c02_checks(Pos7, Pos8, eighth_bits, 7)
+    c02_checks(Pos8, Pos9, ninth_bits, 8)
+    c02_checks(Pos9, Pos10, tenth_bits, 9)
+    c02_checks(Pos10, Pos11, eleventh_bits, 10)
+    c02_checks(Pos11, Pos12, twelfth_bits, 11)
+except:
+    pass
 
 # Final Answer:
-print("Oxygen Rating X C02 Scrubber Rating:", ox_gen_rating_final * c02_scrub_rating)
+print("Oxygen Rating X C02 Scrubber Rating:", ox_gen_rating_final * c02_scrub_rating_final)
