@@ -19,25 +19,66 @@ print(yrange)
 pos = [0,0]
 vel = [6,9]
 steppos = np.array([[0,0]])
-steps = 20
-maxy=0
-for i in range(steps):
-    pos[0] +=vel[0]
-    pos[1] +=vel[1]
-    vel[0] += -1 if (vel[0]>0) else +1
-    vel[1] += -1
-    if pos[1]>maxy:
-        maxy = pos[1]
-    #print(pos)
-    steppos = np.append(steppos,[pos],axis=0)
-    #print(vel)
+steps = 500
 
+def pointInTarget(point,xrange,yrange):
+    #print(point,xrange,yrange)
+    if xrange[0]<=point[0]<=xrange[1] and yrange[0]<=point[1]<=yrange[1]:
+        #print("inside")
+        return True
+    else:
+        #print("outside")
+        return False
+
+globalmaxy = 0
+hitcount = 0
+for vx in range(-200,200):
+    for vy in range(-200,200):
+        maxy=0
+        pos = [0,0]
+        hit = False
+        tvx = vx
+        tvy = vy
+        #steppos = np.array([[0,0]])
+        for i in range(steps):
+            #pos[0] +=vel[0]
+            pos[0] += tvx
+            #pos[1] +=vel[1]
+            pos[1] += tvy
+            tvx += -1 if (tvx>0) else +1
+            tvy += -1
+            if pos[1]>maxy:
+                maxy = pos[1]
+            if pointInTarget(pos,xrange,yrange):
+                #print("hit!!")
+                #print(maxy)
+                hit = True
+                hitcount +=1
+                break
+        if hit:
+            if maxy>globalmaxy:
+                globalmaxy=maxy
+            #break
+            #print(pos)
+            #steppos = np.append(steppos,[pos],axis=0)
+            #print(vel)
+        #if maxy>globalmaxy:
+        #    globalmaxy=maxy
+        #print(steppos)
+        #print(maxy)
+        #x, y = steppos.T
+        #else:
+        #    continue
+        #break
+    #else:
+    #    continue
+    #break
+        
 #print(steppos)
-print(maxy)
-x, y = steppos.T
+#rectangle = plt.Rectangle((xrange[0],yrange[0]),abs(xrange[1]-xrange[0]),abs(yrange[1]-yrange[0]),fc='none',ec="red")
+#plt.gca().add_patch(rectangle)
 
-rectangle = plt.Rectangle((xrange[0],yrange[0]),abs(xrange[1]-xrange[0]),abs(yrange[1]-yrange[0]),fc='none',ec="red")
-plt.gca().add_patch(rectangle)
-
-plt.scatter(x,y)
-plt.show()
+#plt.scatter(x,y)
+#plt.show()
+print(globalmaxy)
+print(hitcount)
