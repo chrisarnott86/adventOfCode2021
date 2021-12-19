@@ -1,5 +1,5 @@
 
-thefilepath = "02_01_Data.txt"
+thefilepath = "input2.txt"
 
 with open(thefilepath) as f:
     file_list = f.readlines()
