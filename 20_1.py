@@ -68,8 +68,8 @@ for i in range(1,len(finalOutput)-2):
 #pprint(finalFinalOutput)
 def countPixels(matrix):
     pixCount = 0
-    for i in range(len(matrix)):
-        for j in range(len(matrix[0])):
+    for i in range(3,len(matrix)-4):
+        for j in range(3,len(matrix[0])-4):
             if matrix[i][j] == '#':
                 pixCount+=1
     return pixCount
