@@ -21,7 +21,6 @@ markings = []
 for i in range(0,100):
     markings.append([['' for i in range(5)] for j in range(5)])
 
-
 def isBingo(card):
     # check all rows for five *
     for row in card:
