@@ -1,7 +1,8 @@
 from random import random as random
+import math
 tempgrid = []
-with open('input9-test.txt','r') as file:
-#with open('input9.txt','r') as file:
+#with open('input9-test.txt','r') as file:
+with open('input9.txt','r') as file:
     temp = file.readlines()
     for line in temp:
         tempgrid.append([line.strip()])
@@ -21,41 +22,23 @@ for i,line in enumerate(tempgrid):
         smokemap[i][j]=int(num)
 #print(smokemap)
 
-dirs=[(0,-1),(0,1),(-1,0),(1,0)]
-risksum = 0
-locs = []
-for i,row in enumerate(smokemap):
-    for j,col in enumerate(row):
-        testvals = []
-        smokeval = smokemap[i][j]
-        #print(smokeval)
-        for dir in dirs:
-            dx = dir[0]
-            dy = dir[1]
-            try:
-                if i+dx>=0 and j+dy>=0:
-                    testvals.append(smokemap[i+dx][j+dy])
-            except:
-                pass #print('ok')
-        #print(len(testvals))
-        if smokeval<min(testvals):
-            locs.append((i,j))
-            #print(testvals)
-            #print(f"got a min {smokeval}")
-            risksum+=smokeval+1
+groups = []
 
-print(risksum)
-print(locs)
-
-basins = []
-def getBasinSize(loc,smokemap):
+def count_groups(i, j):
+    if j < 0 or j >= len(smokemap) or i < 0 or i >= len(smokemap[0]) or smokemap[j][i] == 9 or smokemap[j][i] == -1:
+        return
+    smokemap[j][i] = -1
+    groups[len(groups)-1] += 1
+    count_groups(i+1, j)
+    count_groups(i-1, j)
+    count_groups(i, j+1)
+    count_groups(i, j-1)
     
-    return int(random()*10)+1
-
-for loc in locs:
-    basins.append(getBasinSize(loc,smokemap))
-
-basins.sort(reverse=True)
-
-print(basins[0]*basins[1]*basins[2])
+for i in range(0, len(smokemap)):   
+    for j in range(0, len(smokemap[0])):
+        groups.append(0)
+        count_groups(j, i)
+        
+        
+print(math.prod(sorted(groups, reverse=True)[:3]))
 
