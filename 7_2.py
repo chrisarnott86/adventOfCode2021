@@ -11,7 +11,7 @@ for i in temp[0].split(','):
 
 print(len(crabs))
 
-print("The original list : " + str(crabs))
+#print("The original list : " + str(crabs))
 
 # Mean of list
 res = (float(sum(crabs))/len(crabs))
